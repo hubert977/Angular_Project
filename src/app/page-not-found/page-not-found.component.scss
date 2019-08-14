@@ -1,0 +1,19 @@
+.NotFound 
+{
+    display: flex;
+    width: 100%;
+    height: 80%;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    justify-self: center;
+}
+.error
+{
+    width: 512px;
+    height: 512px;
+    margin-top: 50px;
+    background-size: cover;
+    background-image: url('../../assets/404-error.png')
+}

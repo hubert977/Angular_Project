@@ -1,0 +1,21 @@
+.about-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+    font-family: 'Montserrat', sans-serif;
+    color: grey;
+    font-size: 40px;
+    margin-top: 30px;
+    font-weight: 500;  
+}
+.description
+{
+    width: 50%;
+    height: 200px;
+    margin-top: 20px;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+}

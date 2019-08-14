@@ -1,0 +1,13 @@
+<section class="TablePaginationContainer">
+    
+    <section class="TablePagination">
+        <div class="Posts" *ngFor="let post of PaginationData">
+           {{post.id}}.{{post.title}}
+        </div>
+    </section>
+    <section class="PaginationPagerContainer">
+            <div class="PageButton" (click)="ChangePage($event)" *ngFor="let Data of TotalPage; let i = index">
+            {{Data}}
+            </div>
+    </section>
+</section>
