@@ -12,8 +12,8 @@ export class MenuTaskComponent implements OnInit {
   constructor(private GetData: GetDataService,private store: Store<{store}>) { }
   ngOnInit() {
   }
-  Term:any
-  Data: any 
+  Term: any
+  Data: any
   Url: string = 'https://jsonplaceholder.typicode.com/posts';
   PushToStore($event)
   {

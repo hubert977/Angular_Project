@@ -12,7 +12,7 @@ export class TablePaginationComponent implements OnInit {
   NumberPageEnter: any;
   DataList: any;
   CheckArray: any
-  term: any
+  term
   ArrayPages = []
   TotalPage = []
   PaginationData = []
@@ -21,15 +21,6 @@ export class TablePaginationComponent implements OnInit {
   Url: string = 'https://jsonplaceholder.typicode.com/posts'; //send request to api 
   ngOnInit() {
     this.FetchData();
-  }
-  ngAfterViewChecked()		
-  {
-    this.store.select('apidata','payload').subscribe((data)=>{
-      setTimeout((data)=>{
-        this.term = data;
-      },1)
-    })
-    
   }
   FetchData()
   {

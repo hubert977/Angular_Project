@@ -4,7 +4,9 @@ import {Pipe, PipeTransform} from '@angular/core';
   name: 'searchPipe'
 })
 export class SearchPipe implements PipeTransform {
-    transform(PaginationData: any[], term: string): any {
-        return PaginationData.filter(data => data);
+    transform(PaginationData: any[], term: any): any {
+        return typeof term !== 'undefined' 
+           ? PaginationData.filter(data => data.title.indexOf(term) )
+           : PaginationData;
     }
 }
