@@ -5,7 +5,11 @@ import {Pipe, PipeTransform} from '@angular/core';
 })
 export class SearchPipe implements PipeTransform {
     transform(PaginationData: any[], term: any): any {
-        if(typeof term  === 'undefined' || null)
+        if(typeof term  === 'undefined')
+        {
+          return PaginationData
+        }
+        if(term == null)
         {
           return PaginationData
         }

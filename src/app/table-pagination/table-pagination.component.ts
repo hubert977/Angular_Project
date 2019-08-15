@@ -11,8 +11,8 @@ export class TablePaginationComponent implements OnInit {
   NumberPageClick: any;
   NumberPageEnter: any;
   DataList: any;
-  CheckArray: any
-  term
+  CheckArray: any;
+  term: any;
   ArrayPages = []
   TotalPage = []
   PaginationData = []
@@ -65,6 +65,4 @@ export class TablePaginationComponent implements OnInit {
       this.PaginationData.push(this.DataList[i])
     }
   }
-
-  
 }
