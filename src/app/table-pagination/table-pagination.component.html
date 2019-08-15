@@ -1,6 +1,6 @@
 <section class="TablePaginationContainer">
     <section class="TablePagination">
-        <div class="Posts" *ngFor="let post of PaginationData">
+        <div class="Posts" *ngFor="let post of PaginationData | searchPipe: term ">
            {{post.id}}.{{post.title}}
         </div>
     </section>

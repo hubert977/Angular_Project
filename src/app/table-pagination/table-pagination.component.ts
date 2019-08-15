@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {GetDataService} from '../services/get-data.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store'
-import { addData } from '../DataApiStore/DataActions';
 @Component({
   selector: 'app-table-pagination',
   templateUrl: './table-pagination.component.html',
@@ -13,15 +12,27 @@ export class TablePaginationComponent implements OnInit {
   NumberPageEnter: any;
   DataList: any;
   CheckArray: any
+  term: any
   ArrayPages = []
   TotalPage = []
   PaginationData = []
   AllDataDivide = []
-
   constructor(private GetDataService: GetDataService,private activeRoute: ActivatedRoute, private router: Router,private store: Store<{ state }>) { }
   Url: string = 'https://jsonplaceholder.typicode.com/posts'; //send request to api 
   ngOnInit() {
-
+    this.FetchData();
+  }
+  ngAfterViewChecked()		
+  {
+    this.store.select('apidata','payload').subscribe((data)=>{
+      setTimeout((data)=>{
+        this.term = data;
+      },1)
+    })
+    
+  }
+  FetchData()
+  {
     this.GetDataService.FetchData(this.Url).subscribe((data)=>{
       this.DataList = data;
       this.InsertPageNumbers(data);
@@ -32,14 +43,11 @@ export class TablePaginationComponent implements OnInit {
       {
         this.PaginationData.push(this.DataList[i])
       }
-        this.store.dispatch(addData({payload: this.DataList}))
       if(this.activeRoute.snapshot.params.id > this.TotalPage.length)
       {
         this.router.navigate(['/404']);
       }
     })
-  
-    
   }
   InsertPageNumbers(data)
   {
