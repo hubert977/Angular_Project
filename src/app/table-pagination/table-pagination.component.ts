@@ -21,6 +21,9 @@ export class TablePaginationComponent implements OnInit {
   Url: string = 'https://jsonplaceholder.typicode.com/posts'; //send request to api 
   ngOnInit() {
     this.FetchData();
+    this.store.select('apidata','payload').subscribe((data)=>{
+      this.term = data; 
+    })
   }
   FetchData()
   {
