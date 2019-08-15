@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GetDataService} from '../services/get-data.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import * as state from './../DataApiStore/DataReducer'
 import {Store} from '@ngrx/store'
 import { addData } from '../DataApiStore/DataActions';
 @Component({
@@ -10,14 +9,15 @@ import { addData } from '../DataApiStore/DataActions';
   styleUrls: ['./table-pagination.component.scss']
 })
 export class TablePaginationComponent implements OnInit {
+  NumberPageClick: any;
+  NumberPageEnter: any;
+  DataList: any;
+  CheckArray: any
   ArrayPages = []
   TotalPage = []
   PaginationData = []
-  DataList
   AllDataDivide = []
-  NumberPageClick: any;
-  NumberPageEnter: any;
-  CheckArray: any
+
   constructor(private GetDataService: GetDataService,private activeRoute: ActivatedRoute, private router: Router,private store: Store<{ state }>) { }
   Url: string = 'https://jsonplaceholder.typicode.com/posts'; //send request to api 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class TablePaginationComponent implements OnInit {
       {
         this.PaginationData.push(this.DataList[i])
       }
-        this.store.dispatch(addData({data: this.DataList}))
+        this.store.dispatch(addData({payload: this.DataList}))
       if(this.activeRoute.snapshot.params.id > this.TotalPage.length)
       {
         this.router.navigate(['/404']);
