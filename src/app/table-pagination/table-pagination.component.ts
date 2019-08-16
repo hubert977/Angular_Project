@@ -39,7 +39,6 @@ export class TablePaginationComponent implements OnInit {
       this.store.dispatch(AddDataArray({DataArray: data}))
       this.store.select('apidata','DataArray').subscribe((data)=>{
         this.DataList = data
-        console.log(data);
       })
       this.InsertPageNumbers(data);
       this.NumberPageEnter = this.activeRoute.snapshot.params.id;
