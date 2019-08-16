@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import {ActivatedRoute, Router} from '@angular/router';
+import { Store } from '@ngrx/store';
+import { ChangeStateSearch } from '../DataApiStore/DataActions';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -7,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private router: Router, private store: Store<{store}>) { }
   ngOnInit() {
+    this.store.dispatch(ChangeStateSearch({ShowSearch: false}))
   }
 
 }

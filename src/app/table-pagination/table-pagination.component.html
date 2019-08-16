@@ -5,8 +5,10 @@
         </div>
     </section>
     <section class="PaginationPagerContainer">
-            <div class="PageButton" (click)="ChangePage($event)" *ngFor="let Data of TotalPage; let i = index">
+            <div class="PageButton" (click)="ChangePage($event)"  *ngFor="let Data of TotalPage; let i = index">
+            <div class="NumbersPages"></div>
             {{Data}}
             </div>
+            <input class="InputSearchPage" placeholder="Enter page number..." (keydown)="EnterNumberPage();">
     </section>
 </section>

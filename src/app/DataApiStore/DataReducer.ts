@@ -1,14 +1,24 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import {initialState} from './DataStore'
-import {addData} from './DataActions';
+import {addData, AddDataArray} from './DataActions';
+import {ChangeStateSearch} from './DataActions';
 export interface State {
-  payload: any
+  FilterData: any,
+  ShowSearch: Boolean,
+  DataArray: any
 }
 const dataApi = createReducer(
     initialState,
-    on(addData, (state,{payload}) => ({ 
+    on(addData, (state,{FilterData}) => ({ 
       ...state,
-    payload: payload  })),
+    payload: FilterData  })),
+    on(ChangeStateSearch,(state,{ShowSearch}) => ({
+      ...state,
+      ShowSearch: ShowSearch})),
+    on(AddDataArray,(state,{DataArray})=>({
+      ...state,
+      DataArray: DataArray
+    }))
   );
   
   export function reducer(state: State | undefined, action: Action) {

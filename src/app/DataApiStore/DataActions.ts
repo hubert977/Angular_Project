@@ -2,5 +2,13 @@ import { createAction,props } from '@ngrx/store';
 
 export const addData = createAction(
 'AddData',
-props<{payload: any}>()
+props<{FilterData: any}>()
+);
+export const ChangeStateSearch = createAction(
+'ChangeStateSearch',
+props<{ShowSearch: Boolean}>()
+);
+export const AddDataArray = createAction(
+    'AddDataArray',
+    props<{DataArray: any}>()
 );
