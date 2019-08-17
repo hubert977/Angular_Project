@@ -43,7 +43,8 @@ export class TablePaginationComponent implements OnInit {
   }
   FetchData()  //send request to api 
   {
-  
+    this.PaginationData = []
+
       this.GetDataService.FetchData(this.Url).subscribe((data)=>{
       this.InsertPageNumbers(data);
       this.store.dispatch(AddDataArray({DataArray: data}))
