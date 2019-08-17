@@ -25,24 +25,26 @@ export class TablePaginationComponent implements OnInit {
   constructor(private GetDataService: GetDataService,private activeRoute: ActivatedRoute, private router: Router,private store: Store<{ state }>) { }
   ngOnInit() {
     this.FetchData();
-    this.store.select('apidata').subscribe((data)=>{
-      this.term = data.dataapi.payload; 
-    })
+    
     this.store.select('apidata').subscribe(data=>{
-      this.StateSearchTyping = data.dataapi.SearchTyping 
-      if(data.dataapi.SearchTyping)
+      this.term = data.dataapi.payload; 
+      if(this.term == '')
       {
-        this.PaginationData = data.dataapi.DataArray;
+        
       }
+      this.StateSearchTyping = data.dataapi.ShowStateArray 
+      data.dataapi.ShowStateArray ? this.PaginationData = data.dataapi.DataArray : this.FetchData
     })
+    this.store.dispatch(ChangeStateSearch({ShowSearch: true})) //show search input
+    
   }
   ngOnDestroy() {
-    this.store.dispatch(ChangeStateSearch({ShowSearch: false}))
+    this.store.dispatch(ChangeStateSearch({ShowSearch: false})) //hide search input
   }
   FetchData()  //send request to api 
   {
   
-    this.GetDataService.FetchData(this.Url).subscribe((data)=>{
+      this.GetDataService.FetchData(this.Url).subscribe((data)=>{
       this.InsertPageNumbers(data);
       this.store.dispatch(AddDataArray({DataArray: data}))
       this.store.select('apidata').subscribe((data)=>{

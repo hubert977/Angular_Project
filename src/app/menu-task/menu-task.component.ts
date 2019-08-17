@@ -27,10 +27,7 @@ export class MenuTaskComponent implements OnInit {
   PushToStore($event)
   {
     this.store.dispatch(addData({FilterData: $event.target.value}))
-    this.store.dispatch(ChangeStateTyping({SearchTyping: true}))
-    this.store.select('apidata').subscribe(data => {
-      console.log(data);
-    })
+    this.store.dispatch(ChangeStateTyping({ShowStateArray: true}))
   }
   ShowMenu()
   {

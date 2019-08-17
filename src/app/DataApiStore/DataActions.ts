@@ -14,5 +14,5 @@ props<{DataArray: any}>()
 );
 export const ChangeStateTyping = createAction(
     'ChangeStateTyping',
-    props<{SearchTyping: Boolean}>()
+    props<{ShowStateArray: Boolean}>()
     );
