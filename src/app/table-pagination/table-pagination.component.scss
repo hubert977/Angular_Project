@@ -10,6 +10,7 @@ flex-direction: column;
     .TablePagination
     {
     display: flex;
+    overflow: scroll;
     width: 60%;
     height: 500px;
     margin-top: 50px;

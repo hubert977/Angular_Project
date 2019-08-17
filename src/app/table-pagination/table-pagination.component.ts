@@ -3,7 +3,6 @@ import {GetDataService} from '../services/get-data.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store'
 import { ChangeStateSearch, AddDataArray } from '../DataApiStore/DataActions';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-table-pagination',
   templateUrl: './table-pagination.component.html',
@@ -21,14 +20,21 @@ export class TablePaginationComponent implements OnInit {
   NumberPageEnter: any;
   ShowNumbersPages: boolean = true;
   ShowDataPagination: boolean = true;
+  StateSearchTyping: boolean
   Url: string = 'https://jsonplaceholder.typicode.com/posts';
   constructor(private GetDataService: GetDataService,private activeRoute: ActivatedRoute, private router: Router,private store: Store<{ state }>) { }
   ngOnInit() {
     this.FetchData();
     this.store.select('apidata').subscribe((data)=>{
-      this.term = data.dataapi.FilterData; 
+      this.term = data.dataapi.payload; 
     })
-    this.store.dispatch(ChangeStateSearch({ShowSearch: true}))
+    this.store.select('apidata').subscribe(data=>{
+      this.StateSearchTyping = data.dataapi.SearchTyping 
+      if(data.dataapi.SearchTyping)
+      {
+        this.PaginationData = data.dataapi.DataArray;
+      }
+    })
   }
   ngOnDestroy() {
     this.store.dispatch(ChangeStateSearch({ShowSearch: false}))
@@ -37,11 +43,11 @@ export class TablePaginationComponent implements OnInit {
   {
   
     this.GetDataService.FetchData(this.Url).subscribe((data)=>{
+      this.InsertPageNumbers(data);
       this.store.dispatch(AddDataArray({DataArray: data}))
       this.store.select('apidata').subscribe((data)=>{
         this.DataList = data.dataapi.DataArray
       })
-      this.InsertPageNumbers(data);
       this.NumberPageEnter = this.activeRoute.snapshot.params.id;
       const InitialLoop = this.NumberPageEnter*5-5;
       const EndLoop = this.NumberPageEnter*5;
@@ -69,7 +75,8 @@ export class TablePaginationComponent implements OnInit {
   {
     $event.stopPropagation();
     this.PaginationData=[]
-    this.NumberPageClick = $event.toElement.textContent
+    this.NumberPageClick = $event.target.innerText
+    this.router.navigate([`data-table/${this.NumberPageClick}`])
     const InitialLoop = this.NumberPageClick*5-5;
     const EndLoop = this.NumberPageClick*5
     for(let i=InitialLoop; i<EndLoop; i++)

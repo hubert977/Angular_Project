@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../services/get-data.service';
 import {Store, select} from '@ngrx/store'
-import { addData } from '../DataApiStore/DataActions';
+import { addData, AddDataArray, ChangeStateTyping } from '../DataApiStore/DataActions';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-menu-task',
@@ -17,14 +17,20 @@ export class MenuTaskComponent implements OnInit {
   Data: any
   Url: string = 'https://jsonplaceholder.typicode.com/posts';
   ngOnInit() {
+    this.GetData.FetchData(this.Url).subscribe(data=>{
+      this.store.dispatch(AddDataArray({DataArray: data}))
+    })
    this.store.select('apidata').subscribe(data => {
      this.ShowSearch = data.dataapi.ShowSearch;
-     console.log();
    })
   }
   PushToStore($event)
   {
     this.store.dispatch(addData({FilterData: $event.target.value}))
+    this.store.dispatch(ChangeStateTyping({SearchTyping: true}))
+    this.store.select('apidata').subscribe(data => {
+      console.log(data);
+    })
   }
   ShowMenu()
   {

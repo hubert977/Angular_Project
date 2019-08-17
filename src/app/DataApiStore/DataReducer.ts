@@ -2,10 +2,12 @@ import { Action, createReducer, on } from '@ngrx/store';
 import {initialState} from './DataStore'
 import {addData, AddDataArray} from './DataActions';
 import {ChangeStateSearch} from './DataActions';
+import { state } from '@angular/animations';
 export interface State {
   FilterData: any,
   ShowSearch: Boolean,
-  DataArray: any
+  DataArray: any,
+  SearchTyping: Boolean
 }
 const dataApi = createReducer(
     initialState,
@@ -18,6 +20,10 @@ const dataApi = createReducer(
     on(AddDataArray,(state,{DataArray})=>({
       ...state,
       DataArray: DataArray
+    })),
+    on(ChangeStateSearch,(state,{ShowSearch})=>({
+      ...state,
+       SearchTyping: ShowSearch
     }))
   );
   

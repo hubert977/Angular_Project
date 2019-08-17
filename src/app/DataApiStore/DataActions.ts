@@ -12,3 +12,7 @@ export const AddDataArray = createAction(
 'AddDataArray',
 props<{DataArray: any}>()
 );
+export const ChangeStateTyping = createAction(
+    'ChangeStateTyping',
+    props<{SearchTyping: Boolean}>()
+    );
