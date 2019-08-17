@@ -25,8 +25,8 @@ export class TablePaginationComponent implements OnInit {
   constructor(private GetDataService: GetDataService,private activeRoute: ActivatedRoute, private router: Router,private store: Store<{ state }>) { }
   ngOnInit() {
     this.FetchData();
-    this.store.select('apidata','payload').subscribe((data)=>{
-      this.term = data; 
+    this.store.select('apidata').subscribe((data)=>{
+      this.term = data.dataapi.FilterData; 
     })
     this.store.dispatch(ChangeStateSearch({ShowSearch: true}))
   }
@@ -38,8 +38,8 @@ export class TablePaginationComponent implements OnInit {
   
     this.GetDataService.FetchData(this.Url).subscribe((data)=>{
       this.store.dispatch(AddDataArray({DataArray: data}))
-      this.store.select('apidata','DataArray').subscribe((data)=>{
-        this.DataList = data
+      this.store.select('apidata').subscribe((data)=>{
+        this.DataList = data.dataapi.DataArray
       })
       this.InsertPageNumbers(data);
       this.NumberPageEnter = this.activeRoute.snapshot.params.id;

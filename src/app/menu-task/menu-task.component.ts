@@ -12,13 +12,14 @@ import { Router } from '@angular/router';
 export class MenuTaskComponent implements OnInit {
   constructor(private GetData: GetDataService,private store: Store<{store}>, private router: Router) { }
   ShowSearch: Boolean = true;
-  isActive: Boolean = false;
+  isActive: Boolean = null;
   Term: any
   Data: any
   Url: string = 'https://jsonplaceholder.typicode.com/posts';
   ngOnInit() {
-   this.store.select('apidata','ShowSearch').subscribe(data => {
-     this.ShowSearch = data;
+   this.store.select('apidata').subscribe(data => {
+     this.ShowSearch = data.dataapi.ShowSearch;
+     console.log();
    })
   }
   PushToStore($event)

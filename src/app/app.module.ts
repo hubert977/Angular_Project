@@ -30,7 +30,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     MatButtonModule,
     StoreModule.forRoot({}),  
-    StoreModule.forFeature('apidata',reducer),
+    StoreModule.forFeature('apidata',reducers),
     FormsModule,
     BrowserAnimationsModule
   ],
