@@ -13,5 +13,9 @@ export class AboutComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(ChangeStateSearch({ShowSearch: false}))
   }
+  scroll(target:HTMLElement)
+  {
+    target.scrollIntoView();
+  }
 
 }

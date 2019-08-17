@@ -2,12 +2,12 @@
     <section class="wallpaper">
         <p class="MeetHeader">GET TO KNOW US BETTER</p>
 
-        <svg width="250" height="250" class="NavArrow">
+        <svg (click)="scroll(article)" width="250" height="250" class="NavArrow">
                 <circle cx="125" cy="125" r="100" fill="none" class="NavigationCircle" />
                 <text class="NavCircleText" x="50%" y="50%" text-anchor="middle" fill="white" font-size="100px" font-family="Arial" dy=".3em">˅</text>
         </svg>       
     </section>
-    <section id="article" class="ArticleContainer">
+    <section #article id="article" class="ArticleContainer">
         <h1>ARTICLES</h1>
         <section class="Articles">
         <article></article>
