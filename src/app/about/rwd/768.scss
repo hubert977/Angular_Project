@@ -1,0 +1,18 @@
+@media only screen and (max-width: 768px)
+{
+    .about-container
+    {
+        .Articles article:not(:first-child)
+        {
+            margin-left: 0px;
+        }
+        .wallpaper  {
+            .MeetHeader
+            {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+  
+}

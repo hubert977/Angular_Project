@@ -13,6 +13,7 @@
         height: 100%;   
         background-image: url('../../assets/wallpaper.png');
         background-size: cover;
+        background-attachment: fixed;
         filter: grayscale(80%);  
     .MeetHeader
     {
@@ -47,5 +48,38 @@
 {
     font-size: 40px;
 }
-
+.ArticleContainer
+{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    color: grey;
+    font-size: 50px;
+}
+.Articles 
+{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    width: 100%;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+}
+.Articles article 
+{
+    width: 250px;   
+    height: 200px;
+    background-image: url('../../assets/icon.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 0.5px solid grey;
+}
+.Articles article:not(:first-child)
+{
+    margin-left: 50px;
+}
 }

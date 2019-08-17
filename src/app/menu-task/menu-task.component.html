@@ -2,4 +2,13 @@
 <h1 routerLink="">MONOGO</h1>
 <input class="search" placeholder="Search by title..." *ngIf="ShowSearch"  (keyup)="PushToStore($event)">
 <button class="About" routerLink="/about"   mat-raised-button >ABOUT</button>
+<button class="hamburger hamburger--collapse" type="button" [ngClass]="{'isActive':isActive}" (click)="ShowMenu()" >
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+</button>
+<section class="MenuContainer" [ngClass]="{'ShowMenu':isActive,'HideMenu':!isActive}">
+    <p (click)="ShowMenu()" routerLink="">Home</p>
+    <p (click)="ShowMenu()" routerLink="/about">About</p>
+</section>
 </header>

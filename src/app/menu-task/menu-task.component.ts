@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class MenuTaskComponent implements OnInit {
   constructor(private GetData: GetDataService,private store: Store<{store}>, private router: Router) { }
   ShowSearch: Boolean = true;
+  isActive: Boolean = false;
   Term: any
   Data: any
   Url: string = 'https://jsonplaceholder.typicode.com/posts';
@@ -23,5 +24,9 @@ export class MenuTaskComponent implements OnInit {
   PushToStore($event)
   {
     this.store.dispatch(addData({FilterData: $event.target.value}))
+  }
+  ShowMenu()
+  {
+    this.isActive = !this.isActive
   }
 }
