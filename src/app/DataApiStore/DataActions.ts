@@ -9,6 +9,6 @@ export const ChangeStateSearch = createAction(
 props<{ShowSearch: Boolean}>()
 );
 export const AddDataArray = createAction(
-    'AddDataArray',
-    props<{DataArray: any}>()
+'AddDataArray',
+props<{DataArray: any}>()
 );
