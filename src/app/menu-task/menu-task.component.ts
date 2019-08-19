@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class MenuTaskComponent implements OnInit {
   constructor(private GetData: GetDataService,private store: Store<{store}>, private router: Router) { }
   ShowSearch: Boolean = true;
-  isActive: Boolean = null;
+  isActive: any = null;
   Term: any
   Data: any
   Url: string = 'https://jsonplaceholder.typicode.com/posts';

@@ -28,10 +28,6 @@ export class TablePaginationComponent implements OnInit {
     
     this.store.select('apidata').subscribe(data=>{
       this.term = data.dataapi.payload; 
-      if(this.term == '')
-      {
-        
-      }
       this.StateSearchTyping = data.dataapi.ShowStateArray 
       data.dataapi.ShowStateArray ? this.PaginationData = data.dataapi.DataArray : this.FetchData
     })
@@ -44,7 +40,6 @@ export class TablePaginationComponent implements OnInit {
   FetchData()  //send request to api 
   {
     this.PaginationData = []
-
       this.GetDataService.FetchData(this.Url).subscribe((data)=>{
       this.InsertPageNumbers(data);
       this.store.dispatch(AddDataArray({DataArray: data}))
