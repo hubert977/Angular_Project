@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import {GetDataService} from '../services/get-data.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store'
@@ -53,10 +53,7 @@ export class TablePaginationComponent implements OnInit {
       {
         this.PaginationData.push(this.DataList[i])
       }
-      if(this.activeRoute.snapshot.params.id > this.TotalPage.length)
-      {
-        this.router.navigate(['/404']);
-      }
+     
     })
   }
   InsertPageNumbers(data) // count pages
@@ -67,6 +64,12 @@ export class TablePaginationComponent implements OnInit {
     for(let i=1; i<=this.ArrayPages.length/5; i=i+1)
     {
       this.TotalPage.push(i);
+    }
+    const NumberRoute = Number(this.activeRoute.snapshot.params.id);
+    const index = this.TotalPage.indexOf(NumberRoute)
+    if(index == -1)
+    {
+      this.router.navigate(['/404']);
     }
   }
   ChangePage($event) // click number page
