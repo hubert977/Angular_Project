@@ -25,7 +25,7 @@ export class TablePaginationComponent implements OnInit {
   constructor(private GetDataService: GetDataService,private activeRoute: ActivatedRoute, private router: Router,private store: Store<{ state }>) { }
   ngOnInit() {
     this.FetchData();
-    
+    console.log(typeof this.activeRoute.snapshot.params.id);
     this.store.select('apidata').subscribe(data=>{
       this.term = data.dataapi.payload; 
       this.StateSearchTyping = data.dataapi.ShowStateArray 
