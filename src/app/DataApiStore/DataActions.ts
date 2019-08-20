@@ -13,6 +13,6 @@ export const AddDataArray = createAction(
 props<{DataArray: any}>()
 );
 export const ChangeStateTyping = createAction(
-    'ChangeStateTyping',
-    props<{ShowStateArray: Boolean}>()
-    );
+'ChangeStateTyping',
+props<{ShowStateArray: Boolean}>()
+);

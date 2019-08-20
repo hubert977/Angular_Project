@@ -67,16 +67,17 @@ export class TablePaginationComponent implements OnInit {
     }
     const NumberRoute = Number(this.activeRoute.snapshot.params.id);
     const index = this.TotalPage.indexOf(NumberRoute)
-    if(index == -1)
-    {
-      this.router.navigate(['/404']);
-    }
+    index == -1 ? this.router.navigate(['/404']) : 1 
   }
   ChangePage($event) // click number page
   {
     $event.stopPropagation();
     this.PaginationData=[]
     this.NumberPageClick = $event.target.innerText
+    if($event.target.innerText == null)
+    {
+      this.NumberPageClick = $event.key
+    }
     this.router.navigate([`data-table/${this.NumberPageClick}`])
     const InitialLoop = this.NumberPageClick*5-5;
     const EndLoop = this.NumberPageClick*5

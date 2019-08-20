@@ -1,4 +1,5 @@
 @import '../../../node_modules/hamburgers/dist/hamburgers.css';
+@import '../../../Contants/Header.scss';
 header 
 {
     display: flex;
@@ -6,12 +7,12 @@ header
     justify-items: center;
     justify-content: space-between;
     font-family: 'Montserrat', sans-serif;
-    color: grey;
-    -webkit-box-shadow: 0px 2px 3px 0px rgba(187, 187, 187, 0.75);
-    -moz-box-shadow: 0px 2px 3px 0px rgba(187, 187, 187, 0.75);
-    box-shadow: 0px 2px 3px 0px rgba(187, 187, 187, 0.75);
+    -webkit-box-shadow: 0px 2px 3px 0px $BackgroundShadowHeader;
+    -moz-box-shadow: 0px 2px 3px 0px $BackgroundShadowHeader;
+    box-shadow: 0px 2px 3px 0px $BackgroundShadowHeader;
     h1 
     {
+        color: $LogoColorText;
         cursor: default;
         margin-left: 55px;
     }
@@ -19,6 +20,7 @@ header
 {
     height: 30px;
     width: 200px;
+    color: $InputColorText;
     margin-top: 18px;
     padding-left: 10px;
 }
